@@ -30,5 +30,5 @@ rs = hbexec("scan 'hbase:meta',{FILTER=>\"PrefixFilter('%s')\", COLUMNS => 'info
 # extract regionid
 rs = map(regionid, rs.split("\n"))
 rs = filter(lambda x:x, rs)
-# group ever 2 region ids and merge them
+# group every 2 region ids and merge them
 map(merge, *([iter(rs)] *2))
